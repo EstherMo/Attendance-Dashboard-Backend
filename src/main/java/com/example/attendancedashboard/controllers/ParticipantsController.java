@@ -43,16 +43,16 @@ public class ParticipantsController {
     public Participant createNewParticipant(@RequestBody Participant newParticipant) {
         return psRepository.save(newParticipant);
     }
-//    @PatchMapping("/programs/{programId}")
-//    public Program updateProgramById(@PathVariable Long programId, @RequestBody Program userRequest) {
-//
-//        Program programFromDb = programsRepository.findById(programId).get();
-//
-//        programFromDb.setEventName(userRequest.getEventName());
-//        programFromDb.setProgramDate(userRequest.getProgramDate());
-//        programFromDb.setCategory(userRequest.getCategory());
-//
-//        return programsRepository.save(programFromDb);
-//    }
+    @PatchMapping("/participant/{participantId}")
+    public Participant updateParticipantById(@PathVariable Long participantId, @RequestBody Participant userRequest) {
+
+        Participant participantFromDb = psRepository.findById(participantId).get();
+
+        participantFromDb.setFirstName(userRequest.getFirstName());
+        participantFromDb.setLastName(userRequest.getLastName());
+        participantFromDb.setEmailAddress(userRequest.getEmailAddress());
+
+        return psRepository.save(participantFromDb);
+    }
 
 }
