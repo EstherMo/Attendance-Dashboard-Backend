@@ -2,6 +2,7 @@ package com.example.attendancedashboard.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -22,6 +23,7 @@ public class Program {
     @JsonIgnore
     @Access(AccessType.PROPERTY)
     @ManyToMany(mappedBy = "programs")
+    @ModelAttribute("getParticipants")
     public Set<Participant> getParticipants() {
         return participants;
     }
