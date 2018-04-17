@@ -21,14 +21,12 @@ public class Participant {
 
     @Access(AccessType.PROPERTY)
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "programs_participants", joinColumns = @JoinColumn(name = "participant_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "program_id", referencedColumnName = "id"))
     public Set<Program> getPrograms() {
-        return programs;
+        return this.programs;
     }
-    public void setPrograms(Set<Program> programs) {
-        this.programs = programs;
-    }
+    public void setPrograms(Set<Program> programs) { this.programs = programs; }
 
 
 

@@ -20,12 +20,13 @@ public class Program {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @JsonIgnore
     @Access(AccessType.PROPERTY)
-    @ManyToMany(mappedBy = "programs")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "programs")
     @ModelAttribute("getParticipants")
     public Set<Participant> getParticipants() {
-        return participants;
+        return this.participants;
     }
 
     public void setParticipants(Set<Participant> participants) {
@@ -36,11 +37,19 @@ public class Program {
     private String eventName;
 
     @Column(name = "PROGRAM_DATE")
-    private Date programDate;
+    private String programDate;
 
     @Column(name = "CATEGORY")
     private String category;
 
+    @Column(name = "LOCATION")
+    private String location;
 
-
+    public Program(String name, String date, String category, String location) {
+        this.id = id;
+        this.eventName = name;
+        this.programDate = date;
+        this.category = category;
+        this.location = location;
+    }
 }

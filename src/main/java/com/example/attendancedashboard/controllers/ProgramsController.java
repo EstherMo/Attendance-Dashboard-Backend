@@ -31,6 +31,12 @@ public class ProgramsController {
         return programsRepository.findByParticipantsId(participantId);
     }
 
+//    //add a participant to a program
+//    @PostMapping("/programs/participant")
+//    public Program createNewParticipantForProgram(@RequestBody Program newParticipant) {
+//        return programsRepository.save(newParticipant);
+//    }
+
 
     @GetMapping("/programs/{programId}")
     public Optional<Program> findProgramById(@PathVariable Long programId) {
@@ -45,6 +51,7 @@ public class ProgramsController {
     public Program createNewProgram(@RequestBody Program newProgram) {
         return programsRepository.save(newProgram);
     }
+
     @PatchMapping("/programs/{programId}")
     public Program updateProgramById(@PathVariable Long programId, @RequestBody Program userRequest) {
 

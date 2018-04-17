@@ -1,11 +1,11 @@
 INSERT INTO PROGRAMS
-	(EVENT_NAME,PROGRAM_DATE,CATEGORY)
+	(EVENT_NAME,PROGRAM_DATE,CATEGORY,LOCATION)
 VALUES
-	('Moho Martial Arts','2018-03-10','social'),
-	('Mindful Munchies','2018-03-19','service'),
-	('Syrian Shabbat Meal','2018-03-17', 'culture'),
-	('Gender in Judaism Workshop with Abby Stein', '2018-03-03','learning'),
-	('Queer Arabic Dance Night','2018-02-14','culture');
+	('Moho Martial Arts','2018-03-10','social','New york'),
+	('Mindful Munchies','2018-03-19','service','New york'),
+	('Syrian Shabbat Meal','2018-03-17', 'culture','New york'),
+	('Gender in Judaism Workshop with Abby Stein', '2018-03-03','learning','New york'),
+	('Queer Arabic Dance Night','2018-02-14','culture','New york');
 
 INSERT INTO PARTICIPANTS
 	(FIRST_NAME,LAST_NAME,EMAIL_ADDRESS)
@@ -24,8 +24,8 @@ VALUES
     ('Dario', 'Lunas',' bli@gmail.com'),
     ('Louis', 'Porteous',' lmc@gmail.com'),
     ('Dylan', 'Zibel',' tmq@gmail.com'),
-       ('Eric', 'Getter',' lmc@gmail.com'),
-        ('Jacqui', 'Brooke',' tmq@gmail.com');
+    ('Eric', 'Getter',' lmc@gmail.com'),
+    ('Jacqui', 'Brooke',' tmq@gmail.com');
 
 INSERT INTO PROGRAMS_PARTICIPANTS
 	(PROGRAM_ID,PARTICIPANT_ID)

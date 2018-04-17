@@ -1,13 +1,16 @@
 package com.example.attendancedashboard.controllers;
 
 import com.example.attendancedashboard.models.Participant;
+import com.example.attendancedashboard.models.Program;
 import com.example.attendancedashboard.repositories.ParticipantssRepository;
 import com.example.attendancedashboard.repositories.ProgramsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class ParticipantsController {
@@ -28,6 +31,20 @@ public class ParticipantsController {
     @GetMapping("/participants/program/{programId}")
     public Iterable<Participant> findParticipantsbyProgramId(@PathVariable long programId) {
         return psRepository.findByProgramsId(programId);
+    }
+
+    //set program info for a participant
+    @PostMapping("/participants/{programId}/{participantId}")
+    public void createNewProgramforParticipant(@PathVariable Long participantId, @PathVariable Long programId) {
+        Participant thisParticipant = psRepository.findById(participantId).get();
+        //System.out.println( "xxxxxxxxxxxxxxxxxxxPARTICIPANNNNNTTTTTTTTTTTTTT" + thisParticipant);
+        Set<Program> programHash = new HashSet<>();
+        //System.out.println( "yyyyyyyyyyyyyyPROGRAMHASSSHHHHHHHHHHHHH" + programHash);
+        Program thisProgram = programsRepository.findById(programId).get();
+        //System.out.println( "some program string" + thisProgram);
+
+        programHash.add(thisProgram);
+//        thisParticipant.setPrograms(programHash);
     }
 
     @GetMapping("/participants/{participantId}")
